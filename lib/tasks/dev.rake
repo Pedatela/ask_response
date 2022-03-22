@@ -9,6 +9,7 @@ namespace :dev do
       showSpinner("Criando Banco de dados ..." ) {%x(rails db:create) }
       showSpinner("Criando tabelas do Banco de dados ..." ) {%x(rails db:migrate)}
       showSpinner("Populando Banco de dados com Admin Padrão ..." ) {%x(rails dev:add_default_admin)}
+      showSpinner("Populando Banco de dados com Administradores Extras ..." ) {%x(rails dev:add_extras_admin)}
       showSpinner("Populando Banco de dados com User Padrão ..." ) {%x(rails dev:add_default_user)}
     else
       puts "Você não esta em ambiente de desenvolvimento!"
@@ -22,6 +23,17 @@ namespace :dev do
       password: DEFAULT_PASSWORD,
       password_confirmation: DEFAULT_PASSWORD,
     )
+  end
+
+  desc "Adicionar administradores extras"
+  task add_extras_admin: :environment do
+    10.times do |i|
+      Admin.create!(
+        email: Faker::Internet.email,
+        password: DEFAULT_PASSWORD,
+        password_confirmation: DEFAULT_PASSWORD,
+      )
+    end
   end
 
   desc "Adicionar o usuário padrão"
