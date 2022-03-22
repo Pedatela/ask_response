@@ -19,9 +19,9 @@
         <td><%= admin.id %></td>
         <td><%= admin.email %></td>
         <td>
-          <button class="btn btn-primary btn-sm btn-circle" type="button" data-toggle="tooltip" data-placement="top" title="Edit">
+          <%= link_to edit_admins_backoffice_admin_path(admin), class: "btn btn-primary btn-sm rouded-5"  do%>
             <i class="fa fa-edit"></i>
-          </button>
+          <%end%>
           <button class="btn btn-danger btn-sm btn-circle" type="button" data-toggle="tooltip" data-placement="top" title="Delete">
             <i class="fa fa-trash"></i>
           </button>
