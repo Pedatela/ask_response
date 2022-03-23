@@ -27,7 +27,10 @@ gem 'rails-i18n', '~> 6.0'
 # gem 'bcrypt', '~> 3.1.7'
 #TTY  Read more:https://ttytoolkit.org/
 gem 'tty-spinner'
-
+# Tables Pagination
+gem 'kaminari'
+# Tables Pagination Locale
+gem 'kaminari-i18n'
 gem 'pry'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
