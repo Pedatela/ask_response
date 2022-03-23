@@ -1,6 +1,6 @@
 class AdminsBackoffice::AdminsController < AdminsBackofficeController
   before_action :verify_password, only: [:update]
-  before_action :set_admin, only: [:update, :edit]
+  before_action :set_admin, only: [:update, :edit, :destroy]
   
   def index
     @admins = Admin.all.order(:id)
@@ -31,6 +31,14 @@ class AdminsBackoffice::AdminsController < AdminsBackofficeController
       redirect_to admins_backoffice_admins_path, notice: "Admin cadastrado com Sucesso"
     else
       render :new
+    end
+  end
+
+  def destroy
+    if @admin.destroy
+      redirect_to admins_backoffice_admins_path, notice: "Admin excluido com Sucesso"
+    else
+      render :index
     end
   end
 
