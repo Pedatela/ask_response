@@ -6,6 +6,8 @@
 import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "jquery"
+import "bootstrap-growl-ifightcrime/jquery.bootstrap-growl.js"
 
 Rails.start()
 ActiveStorage.start()
