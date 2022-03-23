@@ -30,7 +30,7 @@ class AdminsBackoffice::AdminsController < AdminsBackofficeController
     if @admin.save()
       redirect_to admins_backoffice_admins_path, notice: "Admin cadastrado com Sucesso"
     else
-      render :edit
+      render :new
     end
   end
 
