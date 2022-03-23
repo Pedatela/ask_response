@@ -3,7 +3,7 @@ class AdminsBackoffice::AdminsController < AdminsBackofficeController
   before_action :set_admin, only: [:update, :edit, :destroy]
   
   def index
-    @admins = Admin.all.order(:description).page(params[:page])
+    @admins = Admin.all.order(:id).page(params[:page])
   end
 
   def edit
