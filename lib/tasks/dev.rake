@@ -13,6 +13,7 @@ namespace :dev do
       showSpinner("Populando Banco de dados com Administradores Extras ..." ) {%x(rails dev:add_extras_admin)}
       showSpinner("Populando Banco de dados com User Padrão ..." ) {%x(rails dev:add_default_user)}
       showSpinner("Populando Banco de dados com assutos Padrões ..." ) {%x(rails dev:add_subjects)}
+      showSpinner("Adicionando perguntas e respostas ..." ) {%x(rails dev:add_aswers_and_questions)}
     else
       puts "Você não esta em ambiente de desenvolvimento!"
     end
@@ -54,6 +55,18 @@ namespace :dev do
 
     File.open(file_path, 'r').each do |line|
       Subject.create!(description: line.strip)
+    end
+  end
+
+  desc "Adicionar Perguntas e Respostas"
+  task add_aswers_and_questions: :environment do
+    Subject.all.each do |subject|
+      rand(5...10).times do |i|
+        Question.create!(
+          description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
+          subject: subject
+        )
+      end
     end
   end
 
